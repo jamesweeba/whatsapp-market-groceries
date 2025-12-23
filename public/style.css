@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background: #e5ddd5;
+  height: 100vh;
+}
+
+.chat-app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+}
+
+/* Header */
+.chat-header {
+  background: #075e54;
+  color: white;
+  padding: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Chat messages */
+.chat-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background: #e5ddd5;
+}
+
+/* Message bubbles */
+.message {
+  max-width: 75%;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.user {
+  background: #dcf8c6;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.bot {
+  background: #fff;
+  align-self: flex-start;
+  margin-right: auto;
+}
+
+/* Input bar */
+.chat-input {
+  display: flex;
+  padding: 8px;
+  border-top: 1px solid #ddd;
+  background: #f0f0f0;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 16px;
+}
+
+.chat-input button {
+  margin-left: 8px;
+  border: none;
+  background: #075e54;
+  color: white;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 18px;
+}
+
+
+
+
+
+
+/* Typing indicator */
+
+.typing {
+    display: flex;
+    gap: 4px;
+    padding: 6px 10px;
+}
+
+.typing span {
+    width: 6px;
+    height: 6px;
+    background-color: #999;
+    border-radius: 50%;
+    animation: blink 1.4s infinite both;
+}
+
+.typing span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0.2;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
+
+
+/*** Scrollbar styling */
+/* .message {
+    max-width: 70%;
+    padding: 8px 10px;
+    margin: 6px;
+    border-radius: 10px;
+    position: relative;
+    font-size: 14px;
+}
+
+.user {
+    align-self: flex-end;
+    background: #dcf8c6;
+}
+
+
+
+.message-text {
+    margin-bottom: 2px;
+} */
+
+.timestamp {
+    font-size: 10px;
+    color: #888;
+    text-align: right;
+}
+
