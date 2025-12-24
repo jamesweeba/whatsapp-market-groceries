@@ -8,13 +8,6 @@ const sessionId =
     (localStorage.setItem("session_id", crypto.randomUUID()),
         localStorage.getItem("session_id"));
 
-// function addMessage(text, sender) {
-//     const div = document.createElement("div");
-//     div.classList.add("message", sender);
-//     div.innerText = text;
-//     chat.appendChild(div);
-//     chat.scrollTop = chat.scrollHeight;
-// }
 
 function addMessage(text, sender) {
     const div = document.createElement("div");
@@ -76,6 +69,26 @@ form.addEventListener("submit", async (e) => {
 
         typing.remove();
         addMessage(data.output, "bot");
+
+        if (typeof data.output === "string" && (
+            data.output.toLowerCase().includes("order placed") ||
+            data.output.toLowerCase().includes("checkout complete") ||
+            data.output.toLowerCase().includes("order completed") 
+        )) {
+            // Clear old session
+            localStorage.removeItem("session_id");
+
+            // Create new session
+            const newSessionId = crypto.randomUUID();
+            localStorage.setItem("session_id", newSessionId);
+
+            console.log("🔄 Session reset after checkout:", newSessionId);
+
+            // Optional UX message
+            setTimeout(() => {
+                addMessage("🧾 Order completed. New chat started.", "bot");
+            }, 500);
+        }
 
     } catch (err) {
         console.error(err);
